@@ -32,7 +32,15 @@ purchase orders.', 16, 1);
 ROLLBACK TRANSACTION;  
 RETURN   
 END;  
-GO  
+GO
+
+CREATE TRIGGER Purchasing.PreventKeyUpdate  
+ON Purchasing.PurchaseOrderHeader
+AFTER UPDATE
+AS
+IF UPDATE(PurchaseOrderID)
+RAISERROR ('Update Primary Key Detected', 16, 10);  
+GO
 
 CREATE TRIGGER safety   
 ON DATABASE   

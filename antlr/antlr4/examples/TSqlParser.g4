@@ -2986,6 +2986,7 @@ search_condition
 
 predicate
     : EXISTS '(' subquery ')'
+    | UPDATE '(' ( full_column_name | LOCAL_ID) ')'
     | freetext_predicate
     | expression comparison_operator expression
     | expression comparison_operator (ALL | SOME | ANY) '(' subquery ')'
